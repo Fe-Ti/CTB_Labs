@@ -1,6 +1,8 @@
-function success = plot_bode(m, p, r, c, mag_tiles, pha_tiles)
+function success = plot_bode(m, p, w, r, c, mag_tiles, pha_tiles)
+    mag_db = mag2db(m);
+
     subplot(r, c, mag_tiles); % row, col, index;
-    semilogx (m)
+    semilogx (w, mag_db)
     axis ("tight")
     ylim (__axis_margin__ (ylim))
     grid ("on")
@@ -8,7 +10,7 @@ function success = plot_bode(m, p, r, c, mag_tiles, pha_tiles)
     ylabel ("Magnitude [dB]")
 
     subplot(r, c, pha_tiles);
-    semilogx (p)
+    semilogx (w, p)
     axis ("tight")
     ylim (__axis_margin__ (ylim))
     grid ("on")

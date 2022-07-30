@@ -11,10 +11,10 @@ function sucsess=plot_diagrams(sys, modelling_time)
     
     % new figure with awesome name
     figure('Name', get(sys, 'Name'));
-    
+
     % workaround for Octave's control package
     [m p w] = bode(sys);
-    plot_bode(m, p, r, c, mag_tiles, pha_tiles);
+    plot_bode(m, p, w, r, c, mag_tiles, pha_tiles);
 
     subplot(r, c, step_tiles); % row, col, index;
     set(sys, 'OutputName', 'Amplitude');

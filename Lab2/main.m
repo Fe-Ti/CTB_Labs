@@ -11,10 +11,19 @@ T = 0.5
 ksi = 0.4
 modelling_time = 4
 
+% Note:
+%
+% If the script fails in GNU Octave with control package v3.x.x,
+% you should replace some 'error' commands with 'warning' commands in:
+%   - @lti/c2d.m in check for discrete-time (add return statement before endif)
+%   - @imp_invar.m in check for order
+% Otherwise plotting w1 and w4 may not work (cause of step() and impulse()).
+%
+
 % TF for links:
 % amp.
 w1 = tf(K, 'Name', 'Усилитель W1')
-#plot_diagrams(w1, modelling_time)
+plot_diagrams(w1, modelling_time)
 
 % intg.
 w2 = tf(K, [1, 0], 'Name', 'Интегрирующее звено W2')
@@ -56,3 +65,4 @@ num = K;
 den = [T*T, 0, 1];
 w9 = tf(num, den, 'Name', 'Консервативное звено W9 (ksi=0)')
 plot_diagrams(w9, modelling_time)
+
