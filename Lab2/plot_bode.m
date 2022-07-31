@@ -1,4 +1,5 @@
 function success = plot_bode(m, p, w, r, c, mag_tiles, pha_tiles)
+    % based on bode.m from control package
     mag_db = mag2db(m);
 
     subplot(r, c, mag_tiles); % row, col, index;
