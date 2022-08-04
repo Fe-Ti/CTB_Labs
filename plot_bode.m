@@ -1,4 +1,5 @@
 function success = plot_bode(m, p, w, r, c, mag_tiles, pha_tiles)
+% Copyright 2022 Fe-Ti aka T.Kravchenko
     if (nargin < 4)
         r = 2;
         c = 1;

@@ -1,3 +1,4 @@
+% Copyright 2022 Fe-Ti aka T.Kravchenko
 % getting mandatory point for calculating stability margins
 %% circle params
 radius = 1
@@ -54,6 +55,7 @@ mag_sm_abs_val = abs(mag_sm)
 
 % bode plotting (based on bode.m from control package)
 figure
+
 r = 2;
 c = 1;
 mag_tiles = 1;

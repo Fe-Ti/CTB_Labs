@@ -28,11 +28,12 @@ w = 2*pi*logspace(-2, 2, 5*10^3);
 
 #[0 0.1:0.01:10, 20:1:100, 200:100:1000];
 
-#figure('Name', 'nyquist(sys)');
-#nyquist(sys,w);
-#draw_circle(1);
-#figure('Name', 'margin(sys)');
-#margin(sys);
+figure('Name', 'nyquist(sys)');
+nyquist(sys,w);
+draw_circle(1);
+
+figure('Name', 'margin(sys)');
+margin(sys);
 
 
 figure('Name', 'My epic_nyquist(sys)');
@@ -41,5 +42,3 @@ draw_circle(1);
 
 % run a script
 calculate_stability_margins_nyquist
-
-
