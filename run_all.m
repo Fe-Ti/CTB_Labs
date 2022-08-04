@@ -19,7 +19,6 @@ display("    .=||=(--' /  || / |  ,'")
 display("   (  ||  '--'   ||/  '-'")
 display("     '-'")
 
-ls
 cd Lab1
 display("Laboratory work 1")
 clearvars
