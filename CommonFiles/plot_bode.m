@@ -5,12 +5,27 @@ function success = plot_bode(m, p, w, r, c, mag_tiles, pha_tiles)
         c = 1;
         mag_tiles = 1;
         pha_tiles = 2;
-    endif
-    % based on bode.m from control package
-    mag_db = mag2db(m);
+    end
+    
+    if (~iscell(m))
+        m = {m}
+    end
+    
+    if (~iscell(p))
+        p = {p}
+    end
+    
+    if (~iscell(w))
+        w = {w}
+    end
 
+    % based on bode.m from control package
+    mag_db = cellfun (@mag2db, m, "uniformoutput", false);
+    
     subplot(r, c, mag_tiles); % row, col, index;
-    semilogx (w, mag_db)
+    hold on
+    cellfun (@semilogx, w, mag_db)
+    hold off
     axis ("tight")
     ylim (__axis_margin__ (ylim))
     grid ("on")
@@ -18,11 +33,13 @@ function success = plot_bode(m, p, w, r, c, mag_tiles, pha_tiles)
     ylabel ("Magnitude [dB]")
 
     subplot(r, c, pha_tiles);
-    semilogx (w, p)
+    hold on
+    cellfun (@semilogx, w, p)
+    hold off
     axis ("tight")
     ylim (__axis_margin__ (ylim))
     grid ("on")
     xlabel ("Frequency [rad/s]")
     ylabel ("Phase [deg]")
-
     success = 1;
+end

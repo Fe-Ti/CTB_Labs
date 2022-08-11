@@ -1,1 +1,1 @@
-/home/fedor/GithubRepos/CTB_Labs/plot_bode.m
+../CommonFiles/plot_bode.m

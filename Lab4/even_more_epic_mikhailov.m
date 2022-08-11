@@ -23,7 +23,7 @@ function [re im wr] = even_more_epic_mikhailov(sys, w)
 
     end
 
-    if (!nargout)
+    if (nargout == 0)
         plot(re_arr, im_arr, 0,0, 'MarkerSize', 20);
         %axis equal;
         grid on;

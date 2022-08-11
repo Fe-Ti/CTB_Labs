@@ -3,7 +3,7 @@ function [re im wr] = epic_nyquist(sys, w)
 
     if (nargin == 1)
         w = [0.1:0.01:100];
-    endif
+    end
 
     den_vec = get(sys, 'den'){1};
     den_len = size(den_vec)(2);
@@ -20,18 +20,18 @@ function [re im wr] = epic_nyquist(sys, w)
         for n = 1:num_len
             s_power = num_len - n;
             num = num + num_vec(n)*((w_n*i)^s_power);
-        endfor
+        end
         for n = 1:den_len
             s_power = den_len - n;
             den = den + den_vec(n)*((w_n*i)^s_power);
-        endfor
+        end
 
         trans_func = num / den;
 
         re_arr = [re_arr real(trans_func)];
         im_arr = [im_arr imag(trans_func)];
 
-    endfor
+    end
 
     if (!nargout)
         % finally plotting like a lib function
@@ -45,4 +45,4 @@ function [re im wr] = epic_nyquist(sys, w)
         re = re_arr;
         im = im_arr;
         wr = w;
-    endif
+    end

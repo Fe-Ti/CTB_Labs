@@ -15,7 +15,7 @@ modelling_time = 4
 %
 % If the script fails in GNU Octave with control package v3.x.x,
 % you should replace some 'error' commands with 'warning' commands in:
-%   - @lti/c2d.m in check for discrete-time (add return statement before endif)
+%   - @lti/c2d.m in check for discrete-time (add return statement before end)
 %   - @imp_invar.m in check for order
 % Otherwise plotting w1 and w4 may not work (cause of step() and impulse()).
 %

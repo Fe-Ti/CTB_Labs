@@ -3,19 +3,19 @@ function [x y] = draw_circle(r, center, style, step)
 
     if (nargin < 1)
         error("Radius is mandatory arg for draw_circle(r, center, style)")
-    endif
+    end
 
     if (nargin < 2)
         center = [0, 0];
-    endif
+    end
 
     if (nargin < 3)
         style = 'k--';
-    endif
+    end
 
     if (nargin < 4)
         step = 0.001;
-    endif
+    end
 
     psi = 0:step:2*pi;
     coord_x = center(1) + r .* cos(psi);
@@ -28,4 +28,4 @@ function [x y] = draw_circle(r, center, style, step)
     else
         x = coord_x;
         y = coord_y;
-    endif
+    end

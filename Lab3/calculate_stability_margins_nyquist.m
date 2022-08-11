@@ -30,10 +30,10 @@ for n = 2:size(abs_im)(2)
             mag_sm_index = n;
         else
             mag_sm_index = n-1;
-        endif
+        end
         break
-    endif
-endfor
+    end
+end
 
 re_smp2 = re(mag_sm_index);
 im_smp2 = im(mag_sm_index);
