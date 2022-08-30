@@ -1,4 +1,11 @@
-% Just for fun
+% Copyright 2022 Fe-Ti aka T.Kravchenko
+
+% Do not run.
+% This script is
+% Just for fun.
+% SymPy can't eval ilaplace of such a thing
+% At least in reasonable time.
+
 pkg load symbolic
 
 k = sym(1);
