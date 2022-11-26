@@ -6,6 +6,8 @@ if isOctave
     pkg load control symbolic;
 end
 
+linewidth = 2;
+fontsize = 14;
 
 T1 = 0.7
 k1 = 1.6
@@ -48,7 +50,16 @@ plot_diagrams(syscell3, modelling_time, 'Cool Diagrams3')
 
 %  -power of z is amount of sampling periods
 dsys_fb_zoh_delay3 = dsys_fb_zoh * tf(1, [1 0 0 0 0], tsam)
+set(dsys_fb_zoh_delay3, 'Name', 'ZOH с задержкой 2 с');
+
 %~ step(dsys_fb_zoh_delay1, sys_fb, dsys_fb_zoh)
 %~ step(dsys_fb_zoh_delay2, sys_fb, dsys_fb_zoh)
 figure
+set(gcf, 'DefaultLineLineWidth', linewidth);
 step(dsys_fb_zoh_delay3, sys_fb, dsys_fb_zoh)
+ax = gca();
+set(ax, 'fontsize', fontsize);
+sys_cell = {dsys_fb_zoh_delay3, sys_fb, dsys_fb_zoh}
+lg = cellfun (@get, sys_cell, {'Name'}, "uniformoutput", false);
+legend(lg)
+pause

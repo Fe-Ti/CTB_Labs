@@ -14,14 +14,14 @@ delta_cc = [[re - circle_center(1)]
 %% distance between point and circumference
 distance = abs((delta_cc(1,:).^2 + delta_cc(2,:).^2).^(0.5) - radius);
 
-[minimum, pha_sm_index] = min(distance);
+% phase stability margin searching via smallest distance
+[minimum, pha_sm_index] = min(distance); 
 re_smp1 = re(pha_sm_index);
 im_smp1 = im(pha_sm_index);
 w_smp1 = w(pha_sm_index);
 
 
-[mag, pha, w] = bode(sys, w);
-
+% magnitude stability margin searching 
 abs_im = abs(im);
 mag_sm_index = 0;
 for n = 2:size(abs_im)(2)
@@ -40,18 +40,27 @@ im_smp2 = im(mag_sm_index);
 w_smp2 = w(mag_sm_index);
 
 % dots in nyquist diagram
-hold on 
+y_text_margin  = 0.05;
+x_text_margin  = 0.03;
+hold on
 plot (re_smp1,im_smp1 , 'MarkerSize', 20)
-hold off 
-hold on 
+phase_stability_margin = abs(rad2deg((asin(im_smp1))));
+label = strcat("Phase Margin:", num2str(phase_stability_margin))
+text(re_smp1 + x_text_margin, im_smp1 + y_text_margin, label, "fontsize", 10)
+hold off
+hold on
 plot (re_smp2, im_smp2 , 'MarkerSize', 20)
-hold off 
+mag_stability_margin = mag2db(abs(1/(re_smp2)));
+label = strcat("Gain Margin:", num2str(mag_stability_margin))
+text(re_smp2 + x_text_margin, im_smp2 + y_text_margin, label, "fontsize", 10)
+hold off
+
+[mag, pha, w] = bode(sys, w);
 
 phase_sm = abs(pha(pha_sm_index)) - 180;
 mag_sm = mag2db(mag(mag_sm_index));
 phase_sm_abs_val = abs(phase_sm)
 mag_sm_abs_val = abs(mag_sm)
-
 
 % bode plotting (based on bode.m from control package)
 figure
@@ -91,3 +100,4 @@ semilogx([w(pha_sm_index), w(pha_sm_index)], [-180, max(pha)], 'k--');
 semilogx([w(pha_sm_index), w(pha_sm_index)], [-180, pha(pha_sm_index)], 'MarkerSize', 20);
 hold off
 
+pause

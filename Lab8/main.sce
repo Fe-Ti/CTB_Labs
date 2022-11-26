@@ -20,5 +20,5 @@ wP = syslin('c', (kp * Ta + Td) * s + kp, Ta * s + 1);
 
 // Load SISO tool
 
-exec 'Software/sisotool/sisotool-master/loader.sce'
+exec '../../../Software/sisotool/sisotool-master/loader.sce'
 

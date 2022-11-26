@@ -4,7 +4,10 @@ isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0; % detecting type of CAS
 isMatlab = not(isOctave);
 if isOctave
     pkg load control symbolic;
+    set(0, 'DefaultLineLineWidth', 2);
 end
+
+fontsize = 14
 
 T1 = 0.7
 k1 = 1.6
@@ -32,6 +35,8 @@ max_coord = max(abs([re, im]));
 plot([0, 0], [-max_coord, max_coord], 'k--', [-max_coord, max_coord], [0, 0], 'k--')
 hold off
 
+ax = gca();
+set(ax, 'fontsize', fontsize);
 % Here should be some sort of an ASUS logo:
 % <h1 > CTBL </h1>
 % <h4> In search of incredible coefficients </h4>
@@ -64,8 +69,8 @@ else
         rceq = simplify(real (den));
         [K, W] = solve(rceq == 0, iceq == 0);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        k_vec = [k_vec -sort(double(K), "ascend")(1)]
-        w_vec = [w_vec sort(double(W), "descend")(1)];
+        k_vec = [k_vec -sort(double(K), "ascend")(1)]; % collecting K
+        w_vec = [w_vec sort(double(W), "descend")(1)]; % colecting W
         % plotting part (uncomment the latter text)
         %~ k = -sort(double(K), "ascend")(1);
         %~ w1 = tf(k);
@@ -81,6 +86,10 @@ end
 % Plot K_sb = f(T)
 figure
 plot(T_vec, k_vec, 'LineWidth', 2)
+xlabel("T")
+ylabel("K")
+ax = gca();
+set(ax, 'fontsize', fontsize);
 
 % And finnaly plot diagrams for three systems
 k_sys1 = 0.1
@@ -97,3 +106,5 @@ sys3 = tf(k_sys3*k1,[T_sys3*T1, T_sys3+T1, 1, -k_sys3*k1], 'Name', 'sys_A3')
 plot_diagrams(sys1, 4)
 plot_diagrams(sys2, 4)
 plot_diagrams(sys3, 4)
+
+pause
