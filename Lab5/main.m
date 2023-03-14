@@ -44,9 +44,9 @@ syscell1 = {sys_fb, dsys_fb_zoh};
 syscell2 = {sys_fb, dsys_fb_tus};
 syscell3 = {sys_fb, dsys_fb_zoh, dsys_fb_tus};
 %~ syscell = {sys_fb, dsys_fb_zoh, dsys_fb_foh, dsys_fb_tus, dsys_fb_imp}
-plot_diagrams(syscell1, modelling_time, 'Cool Diagrams1')
-plot_diagrams(syscell2, modelling_time, 'Cool Diagrams2')
-plot_diagrams(syscell3, modelling_time, 'Cool Diagrams3')
+plot_diagrams(syscell1, modelling_time, 'ZOH')
+plot_diagrams(syscell2, modelling_time, 'Tustin')
+plot_diagrams(syscell3, modelling_time, 'ZOH vs Tustin')
 
 %  -power of z is amount of sampling periods
 dsys_fb_zoh_delay3 = dsys_fb_zoh * tf(1, [1 0 0 0 0], tsam)
@@ -56,7 +56,7 @@ set(dsys_fb_zoh_delay3, 'Name', 'ZOH с задержкой 2 с');
 %~ step(dsys_fb_zoh_delay2, sys_fb, dsys_fb_zoh)
 figure
 set(gcf, 'DefaultLineLineWidth', linewidth);
-step(dsys_fb_zoh_delay3, sys_fb, dsys_fb_zoh)
+plot_diagrams({dsys_fb_zoh_delay3, sys_fb, dsys_fb_zoh}, modelling_time, 'Delay cmp')
 ax = gca();
 set(ax, 'fontsize', fontsize);
 sys_cell = {dsys_fb_zoh_delay3, sys_fb, dsys_fb_zoh}

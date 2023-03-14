@@ -66,3 +66,4 @@ den = [T*T, 0, 1];
 w9 = tf(num, den, 'Name', 'Консервативное звено W9 (ksi=0)')
 plot_diagrams(w9, modelling_time)
 
+pause

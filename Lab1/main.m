@@ -63,3 +63,7 @@ plot(time, x(:,1), 'b-', time, x(:,2), 'g--', 'LineWidth', 2);
 legend('x_1(t)','x_2(t)');
 title('Входной сигнал sin(t), ненулевые Н.У.');
 grid on;
+
+
+pause
+

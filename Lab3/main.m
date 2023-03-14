@@ -3,7 +3,7 @@
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0; % detecting type of CAS
 isMatlab = not(isOctave);
 if isOctave
-    pkg load control symbolic signal;
+    pkg load control symbolic;% signal;
 end
 
 T1 = 0.7
@@ -29,6 +29,7 @@ w = 2*pi*logspace(-2, 2, 10^3); % 5);
 figure('Name', 'nyquist(sys)');
 nyquist(sys,w);
 draw_circle(1);
+axis ([-4,4,-4,4],"square")
 
 figure('Name', 'margin(sys)');
 margin(sys);
@@ -37,6 +38,7 @@ margin(sys);
 figure('Name', 'My epic_nyquist(sys)');
 epic_nyquist(sys, w);
 draw_circle(1);
+axis ([-4,4,-4,4],"square")
 
 % run a script
 calculate_stability_margins_nyquist

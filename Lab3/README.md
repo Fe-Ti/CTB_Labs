@@ -24,11 +24,12 @@
 
 <div align="center">
 
+</div>
+
 ![struct_sch](struct_sch.png)
 
 ###### Рисунок 1
 
-</div>
 
 ## Задачи
 
